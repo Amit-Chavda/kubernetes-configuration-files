@@ -33,5 +33,5 @@ spec:
   ports:
     - name: rest-api-service
       protocol: TCP
-      port: 7001
+      port: 8085
       targetPort: 4001

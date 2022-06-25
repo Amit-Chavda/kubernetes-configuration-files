@@ -7,13 +7,13 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: myapp.k8s.io
+    - host: demo.localdev.me
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /hi
+            pathType: Prefix  
             backend:
               service:
                 name: rest-api-service
                 port:
-                  number: 7001
+                  number: 8085
