@@ -18,4 +18,6 @@ spec:
       containers:
         - name: rest-api
           image: amitchavda00/rest-api:1.0
-        
+          ports:
+            - containerPort: 4001
+              name: rest-api
