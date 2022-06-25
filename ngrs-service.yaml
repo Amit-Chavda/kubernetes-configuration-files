@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: locslhost
+    - host: myapp.k8s.io
       http:
         paths:
           - path: /
@@ -16,4 +16,4 @@ spec:
               service:
                 name: rest-api-service
                 port:
-                  number: 4001
+                  number: 7001
