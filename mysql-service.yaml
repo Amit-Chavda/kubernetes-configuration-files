@@ -1,45 +1,15 @@
-apiVersion: apps/v1
-kind: StatefulSet
+#headless service
+apiVersion: v1
+kind: Service
 metadata:
-  name: mysql-svc
+  name: mysql
   namespace: default
 spec:
   selector:
-    matchLabels:
-      app: mysql-svc # has to match .spec.template.metadata.labels
-  serviceName: "mysql-svc"
-  replicas: 1 # by default is 1
-  template:
-    metadata:
-      labels:
-        app: mysql-svc # has to match .spec.selector.matchLabels
-    spec:
-      terminationGracePeriodSeconds: 10
-      containers:
-        - name: mysql-svc
-          image: mysql:5.7
-          ports:
-            - containerPort: 3306
-              name: web
-          volumeMounts:
-            - name: www
-              mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
-    - metadata:
-        name: www
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: "my-storage-class"
-        resources:
-          requests:
-            storage: 1Gi
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-password
-  namespace: default
-type: Opaque
-data:
-  MYSQL_ROOT_PASSWORD: root
+    app: mysql
+  type: ClusterIP
+  ClusertIP: None
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
