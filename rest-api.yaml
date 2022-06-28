@@ -21,6 +21,7 @@ spec:
           ports:
             - containerPort: 4001
               name: rest-api
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
